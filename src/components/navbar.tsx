@@ -17,7 +17,7 @@ import {
   Bars3Icon,
 } from "@heroicons/react/24/solid";
 
-const handleClick = (e, href) => {
+const handleClick = (e: any, href: any) => {
   e.preventDefault(); // Prevent the default behavior of the anchor tag
   const section = document.querySelector(href);
   if (section) {
@@ -46,6 +46,7 @@ const NAV_MENU = [
 interface NavItemProps {
   children: React.ReactNode;
   href?: string;
+  onClick?: (e: React.MouseEvent<HTMLAnchorElement>) => void;
 }
 
 function NavItem({ children, href }: NavItemProps) {
@@ -57,6 +58,9 @@ function NavItem({ children, href }: NavItemProps) {
         variant="paragraph"
         color="gray"
         className="flex items-center gap-2 font-medium text-gray-900 cursor-pointer"
+        placeholder=""
+        onPointerEnterCapture={() => {}}
+        onPointerLeaveCapture={() => {}}
       >
         {children}
       </Typography>
@@ -81,9 +85,18 @@ export function Navbar() {
       shadow={false}
       fullWidth
       className="fixed top-0 z-50 w-full bg-white"
+      placeholder=""
+      onPointerEnterCapture={() => {}}
+      onPointerLeaveCapture={() => {}}
     >
       <div className="container mx-auto flex items-center justify-between">
-        <Typography color="blue-gray" className="text-lg font-bold">
+        <Typography
+          color="blue-gray"
+          className="text-lg font-bold"
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
+        >
           Srivathsa K
         </Typography>
         <ul className="ml-10 hidden items-center gap-8 lg:flex">
@@ -99,6 +112,9 @@ export function Navbar() {
           color="gray"
           onClick={handleOpen}
           className="ml-auto inline-block lg:hidden"
+          placeholder=""
+          onPointerEnterCapture={() => {}}
+          onPointerLeaveCapture={() => {}}
         >
           {open ? (
             <XMarkIcon strokeWidth={2} className="h-6 w-6" />
